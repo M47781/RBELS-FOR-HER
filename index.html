@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REBELS FOR HER</title>
   <style>
     /* ========================= RESET ========================= */
@@ -22,6 +23,7 @@
       animation: bgLuxury 12s ease-in-out infinite alternate;
       padding: 20px;
       color: #492c04;
+      overflow-x: hidden; /* لمنع أي حركة عرضية زائدة */
     }
 
     @keyframes bgLuxury {
@@ -32,8 +34,8 @@
 
     /* ========================= CONTAINER ========================= */
     .container {
-      max-width: 380px;
       width: 100%;
+      max-width: 400px; /* العرض الأقصى على الكمبيوتر */
       text-align: center;
       padding: 35px 22px;
       position: relative;
@@ -49,44 +51,28 @@
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* Glow effect */
-    .container::before {
-      content: "";
-      position: absolute;
-      inset: -30px;
-      background: radial-gradient(circle, rgba(255, 234, 234, 0.5), transparent 40%);
-      z-index: -1;
-      animation: pulseGlow 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.9; }
-    }
-
     /* ========================= LOGO ========================= */
     .logo {
-      width: 120px;
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
       border-radius: 50%;
       border: 2px solid #F2E8DA;
-      margin: 10px auto 20px;
+      margin: 0 auto 20px;
       animation: floatLogo 3.5s ease-in-out infinite;
-      will-change: transform;
+      display: block;
     }
 
     @keyframes floatLogo {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-6px) rotate(1deg); }
-      50% { transform: translateY(-10px) rotate(-1deg); }
-      75% { transform: translateY(-6px) rotate(1deg); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     /* ========================= LANGUAGE SWITCH ========================= */
     .lang-switch {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 18px;
     }
 
@@ -94,39 +80,33 @@
       background: transparent;
       border: 1px solid #E3D3BA;
       color: #E3D3BA;
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
       cursor: pointer;
       font-size: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .lang-switch button:hover {
-      background: rgba(227,211,186,0.2);
-      transform: scale(1.1);
+      transition: all 0.3s;
     }
 
     .lang-switch button.active {
       background: #74614A;
       color: #fff;
       border-color: #74614A;
-      box-shadow: 0 8px 18px rgba(116,97,74,0.6);
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
 
     /* ========================= TEXT ========================= */
     h1 {
       color: #E6D6C1;
       letter-spacing: 2px;
-      font-size: 23px;
+      font-size: 22px;
       margin-bottom: 10px;
     }
 
     .bio {
       color: #F2E8DA;
       font-size: 14px;
-      margin: 18px 0 28px;
-      line-height: 1.5;
+      margin: 15px 0 25px;
+      line-height: 1.6;
     }
 
     /* ========================= BUTTONS ========================= */
@@ -134,81 +114,59 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 14px 0;
-      padding: 15px;
+      margin: 12px 0;
+      padding: 14px;
       border-radius: 30px;
       text-decoration: none;
       border: 1px solid #E6D6C1;
       color: #E6D6C1;
       font-size: 14px;
       transition: all 0.3s ease;
-      cursor: pointer;
     }
 
     .btn img {
-      width: 18px;
-      height: 18px;
-      margin-right: 8px;
-      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
     }
 
     .btn:hover {
       background: #E6D6C1;
       color: #1C1C1C;
-      transform: scale(1.06);
-      box-shadow: 0 12px 30px rgba(230,214,193,0.55);
-    }
-
-    .btn.primary {
-      background: #E6D6C1;
-      color: #1C1C1C;
-      font-weight: 600;
-    }
-
-    .btn.primary:hover {
-      transform: scale(1.08);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     /* ========================= FOOTER ========================= */
     .footer {
       color: #F2E8DA;
-      font-size: 12px;
-      margin-top: 30px;
-      opacity: 0.75;
+      font-size: 11px;
+      margin-top: 25px;
+      opacity: 0.8;
     }
 
-    /* ========================= HORIZONTAL SCROLLING IMAGES ========================= */
+    /* ========================= IMAGE SCROLL ========================= */
     .scroll-wrapper {
       overflow: hidden;
       width: 100%;
       margin-top: 25px;
       padding: 15px 0;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      border-radius: 15px;
-      backdrop-filter: blur(6px);
-      background: rgba(56,33,12,0.15);
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
 
     .scroll-track {
       display: flex;
       gap: 15px;
-      animation: scrollImages 20s linear infinite;
+      animation: scrollImages 25s linear infinite;
+      width: max-content;
     }
 
     .scroll-track img {
-      width: 150px;
-      height: 150px;
+      width: 130px;
+      height: 130px;
       object-fit: cover;
-      border-radius: 15px;
-      border: 2px solid #E6D6C1;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-
-    /* Hover zoom effect */
-    .scroll-track img:hover {
-      transform: scale(1.1);
+      border-radius: 12px;
+      border: 1px solid #E6D6C1;
     }
 
     @keyframes scrollImages {
@@ -216,55 +174,51 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* ========================= RTL SUPPORT ========================= */
+    body[dir="rtl"] .btn img { margin-right: 0; margin-left: 10px; }
     body[dir="rtl"] { direction: rtl; }
 
-    /* ========================= RESPONSIVE ========================= */
-    @media (max-width: 400px) {
-      h1 { font-size: 21px; }
-      .bio { font-size: 13px; }
-      .btn { font-size: 13px; padding: 12px; }
-      .container { padding: 25px 16px; }
-      .logo { width: 100px; }
-      .scroll-track img { width: 120px; height: 120px; }
-    }
   </style>
 </head>
 <body>
+
 <div class="container">
   <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769807631/photo_6046533415936396465_m__1_-removebg-preview_oun7re.png" class="logo" alt="Logo">
 
   <div class="lang-switch">
-    <button onclick="setLang('fr')">FR</button>
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('ar')">AR</button>
+    <button id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+    <button id="btn-ar" onclick="setLang('ar')">AR</button>
   </div>
 
   <h1>REBELS FOR HER</h1>
   <p class="bio" id="bio"></p>
 
-  <a class="btn" href="https://wa.me/213556505794" target="_blank"><img src="icons/whatsapp.png" alt="WhatsApp"> WhatsApp</a>
-  <a class="btn" href="https://www.instagram.com/promise.machinery/" target="_blank"><img src="icons/instagram.png" alt="Instagram"> Instagram</a>
-  <a class="btn" href="https://www.facebook.com/p/Promise-Machinery-100092036896047/" target="_blank"><img src="icons/facebook.png" alt="Facebook"> Facebook</a>
-  <a class="btn" href="https://www.linkedin.com/company/promise-automation/" target="_blank"><img src="icons/tik-tok_3046132.png" alt="LinkedIn"> LinkedIn</a>
-  <a class="btn" href="mailto:contact@reblsher.com" target="_blank"><img src="icons/email.png" alt="Email"> Email</a>
+  <a class="btn" href="https://wa.me/213556505794" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" alt="WhatsApp"> WhatsApp
+  </a>
+  <a class="btn" href="https://www.instagram.com/promise.machinery/" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram"> Instagram
+  </a>
+  <a class="btn" href="https://www.facebook.com/p/Promise-Machinery-100092036896047/" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="Facebook"> Facebook
+  </a>
+  <a class="btn" href="https://www.linkedin.com/company/promise-automation/" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" alt="LinkedIn"> LinkedIn
+  </a>
+  <a class="btn" href="mailto:contact@reblsher.com">
+    <img src="https://cdn-icons-png.flaticon.com/128/732/732200.png" alt="Email"> Email
+  </a>
 
   <p class="footer" id="footer"></p>
 
-  <!-- HORIZONTAL SCROLLING IMAGES -->
   <div class="scroll-wrapper">
     <div class="scroll-track">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396489_y_ozohdt.jpg" alt="Item 1">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396488_y_ccif1a.jpg" alt="Item 2">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396490_y_utdx0k.jpg" alt="Item 3">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396487_y_rhcivp.jpg" alt="Item 4">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396491_y_vribkj.jpg" alt="Item 5">
-      <!-- Duplicate for infinite scroll -->
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396489_y_ozohdt.jpg" alt="Item 1">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396488_y_ccif1a.jpg" alt="Item 2">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396490_y_utdx0k.jpg" alt="Item 3">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396487_y_rhcivp.jpg" alt="Item 4">
-      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396491_y_vribkj.jpg" alt="Item 5">
+      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396489_y_ozohdt.jpg" alt="1">
+      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396488_y_ccif1a.jpg" alt="2">
+      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396490_y_utdx0k.jpg" alt="3">
+      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396487_y_rhcivp.jpg" alt="4">
+      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396489_y_ozohdt.jpg" alt="1">
+      <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396488_y_ccif1a.jpg" alt="2">
     </div>
   </div>
 </div>
@@ -285,14 +239,14 @@
   function setLang(lang) {
     document.getElementById("bio").innerHTML = bioText[lang];
     document.getElementById("footer").innerHTML = footerText[lang];
-
     document.querySelectorAll(".lang-switch button").forEach(btn => btn.classList.remove("active"));
-    document.querySelector(`.lang-switch button[onclick="setLang('${lang}')"]`).classList.add("active");
-
+    document.getElementById(`btn-${lang}`).classList.add("active");
     document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
   }
 
+  // لغة البداية
   setLang('fr');
 </script>
+
 </body>
 </html>
