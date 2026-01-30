@@ -2,15 +2,11 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REBELS FOR HER</title>
   <style>
-    /* ========================= RESET ========================= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* ========================= RESET & MOBILE SETUP ========================= */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -21,9 +17,9 @@
       background: linear-gradient(120deg, #c6c2c2, #74614C, #c7bdb1, #5F4B38);
       background-size: 600% 600%;
       animation: bgLuxury 12s ease-in-out infinite alternate;
-      padding: 15px; /* تقليل الحواف قليلاً للموبايل */
+      padding: 15px;
       color: #492c04;
-      overflow-x: hidden; /* يمنع التمرير الجانبي المزعج */
+      overflow-x: hidden;
     }
 
     @keyframes bgLuxury {
@@ -32,123 +28,51 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ========================= CONTAINER ========================= */
     .container {
-      width: 100%;        /* يأخذ كامل عرض الشاشة المتاح */
-      max-width: 420px;   /* العرض الأقصى ليبقى أنيقاً */
+      width: 100%;
+      max-width: 400px; /* لضمان ظهور الموقع بشكل كبير على الهاتف */
       text-align: center;
-      padding: 40px 20px;
-      position: relative;
-      border-radius: 25px;
-      animation: popIn 0.8s ease-out;
-      background: rgba(56, 33, 12, 0.3);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      padding: 30px 20px;
+      border-radius: 20px;
+      background: rgba(56, 33, 12, 0.25);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
     }
 
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
-    }
+    .logo { width: 110px; border-radius: 50%; border: 2px solid #F2E8DA; margin-bottom: 15px; }
 
-    /* ========================= LOGO ========================= */
-    .logo {
-      width: 115px;
-      height: 115px;
-      object-fit: contain;
-      border-radius: 50%;
-      border: 3px solid #E6D6C1;
-      margin: 0 auto 25px;
-      display: block;
-      background: #fff; /* خلفية بيضاء لبروز اللوغو */
-    }
-
-    /* ========================= LANG SWITCH ========================= */
-    .lang-switch {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 25px;
-    }
-
-    .lang-switch button {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid #E3D3BA;
-      color: #E3D3BA;
-      padding: 8px 18px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 13px;
-      transition: 0.3s;
-    }
-
-    .lang-switch button.active {
-      background: #E6D6C1;
-      color: #38210C;
-      font-weight: bold;
-      border-color: #E6D6C1;
-    }
-
-    /* ========================= BUTTONS ========================= */
+    /* ========================= BUTTONS & LANG ========================= */
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 15px 0;
-      padding: 16px;
-      border-radius: 50px;
+      margin: 12px 0;
+      padding: 15px;
+      border-radius: 30px;
       text-decoration: none;
       border: 1px solid #E6D6C1;
       color: #E6D6C1;
       font-size: 15px;
-      font-weight: 500;
-      transition: 0.3s;
       background: rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
-    .btn img {
-      width: 22px;
-      height: 22px;
-      margin-right: 12px;
-    }
+    .btn:hover { background: #E6D6C1; color: #1C1C1C; transform: scale(1.03); }
 
-    .btn:hover {
-      background: #E6D6C1;
-      color: #1C1C1C;
-      transform: translateY(-2px);
+    .lang-switch { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+    .lang-switch button { 
+      background: transparent; border: 1px solid #E3D3BA; color: #E3D3BA; 
+      padding: 7px 14px; border-radius: 20px; cursor: pointer; font-size: 12px;
     }
+    .lang-switch button.active { background: #E6D6C1; color: #38210C; font-weight: bold; }
 
-    /* ========================= IMAGE SCROLL ========================= */
-    .scroll-wrapper {
-      overflow: hidden;
-      width: 100%;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(230, 214, 193, 0.2);
-    }
+    /* ========================= SCROLL ========================= */
+    .scroll-wrapper { overflow: hidden; width: 100%; margin-top: 25px; }
+    .scroll-track { display: flex; gap: 10px; animation: scroll 20s linear infinite; width: max-content; }
+    .scroll-track img { width: 130px; height: 130px; object-fit: cover; border-radius: 12px; border: 1px solid #E6D6C1; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    .scroll-track {
-      display: flex;
-      gap: 12px;
-      animation: scrollImages 30s linear infinite;
-      width: max-content;
-    }
-
-    .scroll-track img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 15px;
-      border: 1px solid #E6D6C1;
-    }
-
-    @keyframes scrollImages {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* RTL Support */
-    body[dir="rtl"] .btn img { margin-right: 0; margin-left: 12px; }
+    body[dir="rtl"] { direction: rtl; }
   </style>
 </head>
 <body>
@@ -157,26 +81,20 @@
   <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769807631/photo_6046533415936396465_m__1_-removebg-preview_oun7re.png" class="logo" alt="Logo">
 
   <div class="lang-switch">
-    <button id="btn-fr" onclick="setLang('fr')">FR</button>
-    <button id="btn-en" onclick="setLang('en')">EN</button>
-    <button id="btn-ar" onclick="setLang('ar')">AR</button>
+    <button onclick="setLang('fr')" id="btn-fr">FR</button>
+    <button onclick="setLang('en')" id="btn-en">EN</button>
+    <button onclick="setLang('ar')" id="btn-ar">AR</button>
   </div>
 
-  <h1 style="color:#E6D6C1; margin-bottom: 5px;">REBELS FOR HER</h1>
-  <p id="bio" style="color:#F2E8DA; font-size:14px; margin-bottom:25px;"></p>
+  <h1 style="color: #E6D6C1; letter-spacing: 1px; font-size: 24px;">REBELS FOR HER</h1>
+  <p id="bio" style="color: #F2E8DA; margin: 10px 0 20px; font-size: 14px;"></p>
 
-  <a class="btn" href="https://wa.me/213556505794" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" alt="WhatsApp"> WhatsApp
-  </a>
-  <a class="btn" href="https://www.instagram.com/promise.machinery/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram"> Instagram
-  </a>
-  <a class="btn" href="https://www.facebook.com/p/Promise-Machinery-100092036896047/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="Facebook"> Facebook
-  </a>
-  <a class="btn" href="mailto:contact@reblsher.com">
-    <img src="https://cdn-icons-png.flaticon.com/128/732/732200.png" alt="Email"> Email
-  </a>
+  <a class="btn" href="#" id="btn1"></a>
+  <a class="btn" href="#" id="btn2"></a>
+  <a class="btn" href="https://wa.me/213556505794" id="btn3"></a>
+  <a class="btn" href="#" id="btn4"></a>
+
+  <p id="footer" style="color: rgba(242,232,218,0.7); font-size: 11px; margin-top: 20px;"></p>
 
   <div class="scroll-wrapper">
     <div class="scroll-track">
@@ -187,32 +105,53 @@
       <img src="https://res.cloudinary.com/dv664dogt/image/upload/v1769811413/photo_6046533415936396488_y_ccif1a.jpg" alt="2">
     </div>
   </div>
-
-  <p id="footer" style="color:rgba(242, 232, 218, 0.6); font-size:10px; margin-top:20px;"></p>
 </div>
 
 <script>
-  const bioText = {
-    fr: "Style • Confort • Qualité<br><i>Rebellious in decency</i>",
-    en: "Style • Comfort • Quality<br><i>Rebellious in decency</i>",
-    ar: "أناقة • راحة • جودة<br><i>تمرد برقي</i>"
-  };
-
-  const footerText = {
-    fr: "© 2026 REBELS FOR HER. Tous droits réservés.",
-    en: "© 2026 REBELS FOR HER. All rights reserved.",
-    ar: "© 2026 REBELS FOR HER. جميع الحقوق محفوظة."
-  };
-
-  function setLang(lang) {
-    document.getElementById("bio").innerHTML = bioText[lang];
-    document.getElementById("footer").innerHTML = footerText[lang];
-    document.querySelectorAll(".lang-switch button").forEach(btn => btn.classList.remove("active"));
-    document.getElementById(`btn-${lang}`).classList.add("active");
-    document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+const content = {
+  fr: {
+    bio: "Style • Confort • Qualité<br><i>Rebellious in decency</i>",
+    btn1: "🧥 Nouvelle Collection",
+    btn2: "🔥 Édition Limitée",
+    btn3: "📲 Commander via WhatsApp",
+    btn4: "⭐ Avis Clientes",
+    footer: "Made for confident women • 2026",
+    dir: "ltr"
+  },
+  en: {
+    bio: "Style • Comfort • Quality<br><i>Rebellious in decency</i>",
+    btn1: "🧥 New Collection",
+    btn2: "🔥 Limited Edition",
+    btn3: "📲 Order on WhatsApp",
+    btn4: "⭐ Client Reviews",
+    footer: "Made for confident women • 2026",
+    dir: "ltr"
+  },
+  ar: {
+    bio: "أناقة • راحة • جودة<br><i>Rebellious in decency</i>",
+    btn1: "🧥 التشكيلة الجديدة",
+    btn2: "🔥 إصدار محدود",
+    btn3: "📲 اطلب عبر واتساب",
+    btn4: "⭐ آراء الزبونات",
+    footer: "Made for confident women • 2026",
+    dir: "rtl"
   }
+};
 
-  setLang('fr');
+function setLang(lang) {
+  document.body.dir = content[lang].dir;
+  document.getElementById("bio").innerHTML = content[lang].bio;
+  document.getElementById("btn1").innerText = content[lang].btn1;
+  document.getElementById("btn2").innerText = content[lang].btn2;
+  document.getElementById("btn3").innerText = content[lang].btn3;
+  document.getElementById("btn4").innerText = content[lang].btn4;
+  document.getElementById("footer").innerHTML = content[lang].footer;
+
+  document.querySelectorAll(".lang-switch button").forEach(btn => btn.classList.remove("active"));
+  document.getElementById("btn-" + lang).classList.add("active");
+}
+
+setLang('fr');
 </script>
 </body>
 </html>
