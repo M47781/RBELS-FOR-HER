@@ -1,6 +1,6 @@
 const content = {
   fr: {
-    bio: "Style • Confort • Qualité<br><i>Rebellious in decency</i>",
+    bio: "Style • Confort • Qualité<br><i>Rebelle dans la décence</i>", // تم تعديلها للفرنسية
     btn1: "🧥 Nouvelle Collection",
     btn2: "🔥 Édition Limitée",
     btn3: "📲 Commander sur WhatsApp",
@@ -9,7 +9,7 @@ const content = {
     dir: "ltr"
   },
   en: {
-    bio: "Style • Comfort • Quality<br><i>Rebellious in decency</i>",
+    bio: "Style • Comfort • Quality<br><i>Rebellious in decency</i>", // بقيت بالإنجليزية الأصلية
     btn1: "🧥 New Collection",
     btn2: "🔥 Limited Edition",
     btn3: "📲 Order on WhatsApp",
@@ -29,10 +29,10 @@ const content = {
 };
 
 function setLang(lang) {
-  // Set page direction
+  // ضبط اتجاه الصفحة (يمين لليسار أو العكس)
   document.body.dir = content[lang].dir;
 
-  // Update text content
+  // تحديث النصوص
   document.getElementById("bio").innerHTML = content[lang].bio;
   document.getElementById("btn1").innerText = content[lang].btn1;
   document.getElementById("btn2").innerText = content[lang].btn2;
@@ -40,10 +40,10 @@ function setLang(lang) {
   document.getElementById("btn4").innerText = content[lang].btn4;
   document.getElementById("footer").innerHTML = content[lang].footer;
 
-  // Active button highlight
+  // تمييز زر اللغة النشط
   document.querySelectorAll(".lang-switch button").forEach(btn => btn.classList.remove("active"));
   document.querySelector(`.lang-switch button[onclick="setLang('${lang}')"]`).classList.add("active");
 }
 
-// Set default language
+// اللغة الافتراضية عند الفتح
 setLang("fr");
