@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REBELS FOR HER</title>
   <style>
+    /* ========================= CSS ========================= */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -39,9 +40,13 @@
 
     .logo { width: 100px; border-radius: 50%; border: 2px solid #F2E8DA; margin-bottom: 15px; }
 
-    h1 { color: #E6D6C1; font-size: 24px; margin-bottom: 5px; }
+    /* الشعار الثابت */
+    .brand-name { color: #E6D6C1; font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+    .slogan-fixed { color: #F2E8DA; font-style: italic; font-size: 14px; margin-bottom: 15px; display: block; }
 
-    /* تنسيق الأزرار مع الأيقونات */
+    .bio-dynamic { color: #F2E8DA; font-size: 14px; margin-bottom: 20px; font-weight: 500; }
+
+    /* Buttons */
     .btn {
       display: flex;
       align-items: center;
@@ -56,18 +61,8 @@
       transition: 0.3s;
       background: rgba(0,0,0,0.1);
     }
-
-    .btn img {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px; /* مسافة بين الأيقونة والنص */
-    }
-
-    body[dir="rtl"] .btn img {
-      margin-right: 0;
-      margin-left: 10px;
-    }
-
+    .btn img { width: 20px; height: 20px; margin-right: 10px; }
+    body[dir="rtl"] .btn img { margin-right: 0; margin-left: 10px; }
     .btn:hover { background: #E6D6C1; color: #1C1C1C; }
 
     .lang-switch { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
@@ -77,6 +72,7 @@
     }
     .lang-switch button.active { background: #E6D6C1; color: #38210C; font-weight: bold; }
 
+    /* Scroll */
     .scroll-wrapper { overflow: hidden; width: 100%; margin-top: 25px; }
     .scroll-track { display: flex; gap: 10px; animation: scroll 20s linear infinite; width: max-content; }
     .scroll-track img { width: 130px; height: 130px; object-fit: cover; border-radius: 12px; border: 1px solid #E6D6C1; }
@@ -96,23 +92,19 @@
     <button onclick="setLang('ar')" id="btn-ar">AR</button>
   </div>
 
-  <h1>REBELS FOR HER</h1>
-  <p id="bio" style="color: #F2E8DA; font-size: 14px; margin-bottom: 20px;"></p>
+  <div class="brand-name">REBELS FOR HER</div>
+  <span class="slogan-fixed">Rebellious in decency</span>
+  
+  <p id="bio" class="bio-dynamic"></p>
 
   <a class="btn" href="https://wa.me/213556505794" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" alt="WhatsApp"> <span id="txt-wa">WhatsApp</span>
+    <img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" alt="WhatsApp"> <span id="txt-wa"></span>
   </a>
-  
   <a class="btn" href="https://www.instagram.com/promise.machinery/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram"> <span id="txt-ig">Instagram</span>
+    <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram"> <span id="txt-ig"></span>
   </a>
-
   <a class="btn" href="https://www.facebook.com/p/Promise-Machinery-100092036896047/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="Facebook"> <span id="txt-fb">Facebook</span>
-  </a>
-
-  <a class="btn" href="mailto:contact@reblsher.com">
-    <img src="https://cdn-icons-png.flaticon.com/128/732/732200.png" alt="Email"> <span id="txt-mail">Email</span>
+    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="Facebook"> <span id="txt-fb"></span>
   </a>
 
   <p id="footer" style="color: rgba(242,232,218,0.7); font-size: 11px; margin-top: 20px;"></p>
@@ -131,21 +123,21 @@
 <script>
 const content = {
   fr: {
-    bio: "Style • Confort • Qualité<br><i>Rebellious in decency</i>",
-    wa: "WhatsApp", ig: "Instagram", fb: "Facebook", mail: "E-mail",
-    footer: "Faite pour les femmes confiantes<br>🚚 Livraison | ✨ Qualité Premium",
+    bio: "Style • Confort • Qualité",
+    wa: "WhatsApp", ig: "Instagram", fb: "Facebook",
+    footer: "Faite pour les femmes confiantes • 2026",
     dir: "ltr"
   },
   en: {
-    bio: "Style • Comfort • Quality<br><i>Rebellious in decency</i>",
-    wa: "WhatsApp", ig: "Instagram", fb: "Facebook", mail: "Email",
-    footer: "Made for confident women<br>🚚 Delivery | ✨ Premium Quality",
+    bio: "Style • Comfort • Quality",
+    wa: "WhatsApp", ig: "Instagram", fb: "Facebook",
+    footer: "Made for confident women • 2026",
     dir: "ltr"
   },
   ar: {
-    bio: "أناقة • راحة • جودة<br><i>Rebellious in decency</i>",
-    wa: "واتساب", ig: "إنستغرام", fb: "فيسبوك", mail: "بريد إلكتروني",
-    footer: "صُنع للنساء الواثقات<br>🚚 توصيل | ✨ جودة عالية",
+    bio: "أناقة • راحة • جودة",
+    wa: "واتساب", ig: "إنستغرام", fb: "فيسبوك",
+    footer: "صُنع للنساء الواثقات • 2026",
     dir: "rtl"
   }
 };
@@ -154,12 +146,9 @@ function setLang(lang) {
   document.body.dir = content[lang].dir;
   document.getElementById("bio").innerHTML = content[lang].bio;
   document.getElementById("footer").innerHTML = content[lang].footer;
-  
-  // تحديث نصوص الأزرار مع بقاء الأيقونات
   document.getElementById("txt-wa").innerText = content[lang].wa;
   document.getElementById("txt-ig").innerText = content[lang].ig;
   document.getElementById("txt-fb").innerText = content[lang].fb;
-  document.getElementById("txt-mail").innerText = content[lang].mail;
 
   document.querySelectorAll(".lang-switch button").forEach(btn => btn.classList.remove("active"));
   document.getElementById("btn-" + lang).classList.add("active");
