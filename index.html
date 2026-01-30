@@ -40,11 +40,12 @@
 
     .logo { width: 100px; border-radius: 50%; border: 2px solid #F2E8DA; margin-bottom: 15px; }
 
-    /* الشعار الثابت */
-    .brand-name { color: #E6D6C1; font-size: 24px; font-weight: bold; margin-bottom: 5px; }
-    .slogan-fixed { color: #F2E8DA; font-style: italic; font-size: 14px; margin-bottom: 15px; display: block; }
+    /* اسم الماركة الثابت */
+    h1 { color: #E6D6C1; font-size: 24px; font-weight: bold; margin-bottom: 5px; }
 
-    .bio-dynamic { color: #F2E8DA; font-size: 14px; margin-bottom: 20px; font-weight: 500; }
+    /* الجمل المترجمة */
+    .bio { color: #F2E8DA; font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+    .slogan-translated { font-style: italic; display: block; margin-top: 5px; opacity: 0.9; }
 
     /* Buttons */
     .btn {
@@ -72,7 +73,6 @@
     }
     .lang-switch button.active { background: #E6D6C1; color: #38210C; font-weight: bold; }
 
-    /* Scroll */
     .scroll-wrapper { overflow: hidden; width: 100%; margin-top: 25px; }
     .scroll-track { display: flex; gap: 10px; animation: scroll 20s linear infinite; width: max-content; }
     .scroll-track img { width: 130px; height: 130px; object-fit: cover; border-radius: 12px; border: 1px solid #E6D6C1; }
@@ -92,10 +92,9 @@
     <button onclick="setLang('ar')" id="btn-ar">AR</button>
   </div>
 
-  <div class="brand-name">REBELS FOR HER</div>
-  <span class="slogan-fixed">Rebellious in decency</span>
+  <h1>REBELS FOR HER</h1>
   
-  <p id="bio" class="bio-dynamic"></p>
+  <p id="bio" class="bio"></p>
 
   <a class="btn" href="https://wa.me/213556505794" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" alt="WhatsApp"> <span id="txt-wa"></span>
@@ -123,19 +122,19 @@
 <script>
 const content = {
   fr: {
-    bio: "Style • Confort • Qualité",
+    bio: "Style • Confort • Qualité<br><span class='slogan-translated'>Rebelle dans la décence</span>",
     wa: "WhatsApp", ig: "Instagram", fb: "Facebook",
     footer: "Faite pour les femmes confiantes • 2026",
     dir: "ltr"
   },
   en: {
-    bio: "Style • Comfort • Quality",
+    bio: "Style • Comfort • Quality<br><span class='slogan-translated'>Rebellious in decency</span>",
     wa: "WhatsApp", ig: "Instagram", fb: "Facebook",
     footer: "Made for confident women • 2026",
     dir: "ltr"
   },
   ar: {
-    bio: "أناقة • راحة • جودة",
+    bio: "أناقة • راحة • جودة<br><span class='slogan-translated'>تمرد برقي</span>",
     wa: "واتساب", ig: "إنستغرام", fb: "فيسبوك",
     footer: "صُنع للنساء الواثقات • 2026",
     dir: "rtl"
